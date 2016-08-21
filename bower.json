@@ -1,0 +1,21 @@
+{
+  "name": "shaders-study",
+  "authors": [
+    "Evan Cobb <cobb.evan@gmail.com>"
+  ],
+  "description": "Playing around with shaders",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "^2.6.1"
+  }
+}
