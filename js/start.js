@@ -1,1 +1,1 @@
-game.state.start('init');
+game.state.start('changeColor');
