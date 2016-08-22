@@ -4,7 +4,16 @@ var changeColor = function(game) {
             game.load.image('berry', 'assets/berry.png');
         },
 
-        update: function(game) {
+        create: function(game) {
+            this.sprite = game.add.sprite(0, 0, 'berry');
+            this.sprite.width = 300;
+            this.sprite.height = 300;
+            this.graphics = game.add.graphics(0, 0);
+        },
+
+        render: function() {
+            this.graphics.clear();
+            var howMuchShading = Math.sin(new Date().getTime() / 100);
             var fragmentSrc = [
 
                 "precision mediump float;",
@@ -16,7 +25,7 @@ var changeColor = function(game) {
 
                 "vec4 texColor = texture2D(uSampler, vTextureCoord);",
 
-                "if (vTextureCoord.x < 0.1) {",
+                "if (vTextureCoord.x < "+howMuchShading+") {",
                 "texColor = vec4(" + Math.random() + "," +Math.random() + "," +Math.random() + "," + Math.random() + ");",
                 "}",
 
@@ -26,13 +35,12 @@ var changeColor = function(game) {
             ];
 
             //  Texture must be power-of-two sized or the filter will break
-            sprite = game.add.sprite(0, 0, 'berry');
+
 
             filter = new Phaser.Filter(game, null, fragmentSrc);
 
-            sprite.filters = [filter];
+            this.sprite.shader = filter;
         }
-
     };
 };
 
