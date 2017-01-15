@@ -1,9 +1,12 @@
 var changeColor = function(game) {
     return {
-        shaderKeys: ['oldschoolcomp', 'colorchange', 'second'],
+        shaderKeys: [],
         currentShader: -1,
 
         preload: function(game) {
+            this.shaderKeys.push('colorchange');
+            this.shaderKeys.push('oldschoolcomp');
+
             game.load.image('berry', 'assets/berry.png');
 
             for (var i = 0; i < this.shaderKeys.length; ++i) {
