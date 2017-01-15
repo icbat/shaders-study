@@ -10,7 +10,7 @@ void main(void) {
 
     if (vTextureCoord.x < 0.5) {
         float red = mod(time, 10.0) / 10.0;
-        texColor = vec4(0, 0.1, 0.1, 1);
+        texColor = vec4(red, 0.1, 0.1, 1);
     }
 
     gl_FragColor = texColor;

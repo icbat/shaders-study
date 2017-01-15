@@ -1,6 +1,6 @@
 var changeColor = function(game) {
     return {
-        shaderKeys: ['colorchange', 'second'],
+        shaderKeys: ['oldschoolcomp', 'colorchange', 'second'],
         currentShader: -1,
 
         preload: function(game) {
@@ -25,11 +25,12 @@ var changeColor = function(game) {
 
         render: function() {
             this.graphics.clear();
+            this.sprite.shader.update();
         },
 
         setNextShader: function(game) {
             var index = ++this.currentShader % this.shaderKeys.length;
-            var filter = new Phaser.Filter(game, null, game.cache.getShader(this.shaderKeys[index]));
+            filter = new Phaser.Filter(game, null, game.cache.getShader(this.shaderKeys[index]));
             this.sprite.shader = filter;
         }
     };
