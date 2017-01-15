@@ -4,6 +4,7 @@ var changeColor = function(game) {
         currentShader: -1,
 
         preload: function(game) {
+            this.shaderKeys.push('overlay');
             this.shaderKeys.push('colorchange');
             this.shaderKeys.push('oldschoolcomp');
 
