@@ -4,6 +4,8 @@ var changeColor = function(game) {
         currentShader: -1,
 
         preload: function(game) {
+            this.shaderKeys.push('movingline');
+            this.shaderKeys.push('averagecolors');
             this.shaderKeys.push('washout');
             this.shaderKeys.push('overlay');
             this.shaderKeys.push('colorchange');
