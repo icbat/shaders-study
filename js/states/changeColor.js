@@ -4,6 +4,7 @@ var changeColor = function(game) {
         currentShader: -1,
 
         preload: function(game) {
+            this.shaderKeys.push('washout');
             this.shaderKeys.push('overlay');
             this.shaderKeys.push('colorchange');
             this.shaderKeys.push('oldschoolcomp');
@@ -17,10 +18,16 @@ var changeColor = function(game) {
         },
 
         create: function(game) {
-            this.sprite = game.add.sprite(0, 0, 'berry');
+            this.title = game.add.text(200, 0, "", {"fill": "#ffffff"});
+
+            this.sprite = game.add.sprite(0, 100, 'berry');
             this.sprite.width = 300;
             this.sprite.height = 300;
-            this.graphics = game.add.graphics(0, 0);
+
+            var original = game.add.sprite(400, 100, 'berry');
+            original.width = 300;
+            original.height = 300;
+
             this.setNextShader(game);
             this.game.input.onDown.add(function() {
                 this.setNextShader(game);
@@ -28,7 +35,6 @@ var changeColor = function(game) {
         },
 
         render: function() {
-            this.graphics.clear();
             this.sprite.shader.update();
         },
 
@@ -36,6 +42,7 @@ var changeColor = function(game) {
             var index = ++this.currentShader % this.shaderKeys.length;
             filter = new Phaser.Filter(game, null, game.cache.getShader(this.shaderKeys[index]));
             this.sprite.shader = filter;
+            this.title.text = this.shaderKeys[index];
         }
     };
 };
